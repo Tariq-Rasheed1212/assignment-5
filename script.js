@@ -19,6 +19,8 @@ window.addEventListener("load", function() {
    })
 
 
+
+
    // get the form
    // add a listener to when the form submit
   //  form.addEventListener('submit', function(event) {
@@ -27,7 +29,8 @@ window.addEventListener("load", function() {
       // let pilotInput = this.document.querySelector("input[name=pilotName]");
       // const pilotValue = pilotInput.value
 
-      // let list = document.getElementById('faultyItems');
+    let list = document.getElementById('faultyItems');
+    list.style.visibility = 'hidden';
       // formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue)
 
 
