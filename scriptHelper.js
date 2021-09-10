@@ -25,10 +25,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 
 function validateInput(testInput) {
   //check if the test Input is empty
-  if (testInput.value === "Empty"){
+  if (testInput === ""){
     return 'Empty'
   }
-  else if (isNaN(testInput.value) === true){
+  else if (isNaN(testInput)){
       return "Not a Number";
   }
   else {
@@ -42,11 +42,18 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue) {
+  let validFlag = true;
   // check if any of the values are empty
-    if (validateInput(pilotValue) === 'Empty' || validateInput(copilotValue) === 'Empty'){
+    if (validateInput(pilotValue) === 'Empty' || validateInput(copilotValue) === 'Empty' ||validateInput(fuelLevelValue) === 'Empty' || validateInput(cargoLevelValue) === 'Empty' ){
      alert('All fields needs to be filled out.');
+     validFlag = false;
+     
+    } else if(validateInput(pilotValue) === 'Is a Number' || validateInput(copilotValue) === 'Is a Number'){
+      alert ('Please enter a valid name.');
+
     }
-    if (isNaN(fuelLevelValue && cargoLevelValue)){ 
+
+    else (isNaN(fuelLevelValue && cargoLevelValue)){ 
     alert ( 'Must enter valid input!');
   }
 
@@ -56,6 +63,7 @@ function formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue
    pilotElement.innerHTML = `Pilot ${pilotValue} is ready for launch`;
   let copilotElement = document.getElementById("copilotStatus"); 
    copilotElement.innerHTML = `CoPilot ${copilotValue} is ready for launch`;
+
    if(fuelLevelValue < 10000){
    document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch"
    document.getElementById("fuelLevel").innerHTML = "Fuel level too low for launch."; 
