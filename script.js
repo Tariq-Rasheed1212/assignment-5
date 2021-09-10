@@ -1,7 +1,5 @@
 // Write your JavaScript code here!
 
-const { myFetch, pickPlanet, addDestinationInfo } = require("./scriptHelper");
-
 window.addEventListener("load", function() {
 
    let listedPlanets;
@@ -14,21 +12,32 @@ window.addEventListener("load", function() {
    }).then(function () {
        console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-      //  const planet = pickPlanet(listedPlanets)
-      //  addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl)
+      const planet = pickPlanet(listedPlanets);
+      let name = planet["name"];
+      let diameter= planet["diameter"];
+      let star = planet["star"];
+      let distance = planet["distance"];
+      let moons = planet["moons"];
+      let imageUrl = planet["image"];
+
+
+
+
+      addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
    })
 
 
    // get the form
+   let form = document.querySelector("form");
    // add a listener to when the form submit
-  //  form.addEventListener('submit', function(event) {
+   form.addEventListener('submit', function(event) {
       // if it's not, preventDefault
       // get the value for each of the input field
       // let pilotInput = this.document.querySelector("input[name=pilotName]");
       // const pilotValue = pilotInput.value
 
-      // let list = document.getElementById('faultyItems');
-      // formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue)
+      let list = document.getElementById('faultyItems');
+     formSubmission(document, list, pilotValue, copilotValue, fuelLevelValue, cargoLevelValue)
 
-
+   });
 });
